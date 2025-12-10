@@ -1,11 +1,20 @@
 require 'people'
 
 describe 'Attributes' do
-  before (:each) do
-    @people = People.new
-  end
+  # before (:each) do
+  #   @people = People.new
+  # end
 
-  after(:each) do
+  # after(:each) do
+  #   @people.name = "Sem nome!"
+  #   puts ">>> #{@people.inspect}"
+  # end
+
+  around(:each) do |test|
+    @people = People.new
+
+    test.run
+
     @people.name = "Sem nome!"
     puts ">>> #{@people.inspect}"
   end
