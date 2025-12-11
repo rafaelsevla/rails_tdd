@@ -15,4 +15,4 @@ O objetivo deste repositório é documentar a evolução ao longo do curso e ser
 
 
 [Link do curso](https://www.udemy.com/course/rails-tdd/)
-[Github do Jackson]([jacksonpires](https://github.com/jacksonpires))
+[Github do Jackson](https://github.com/jacksonpires)
