@@ -42,7 +42,7 @@ describe 'Stub' do
     expect(another_student.bar).to eq('Palmeiras')
   end
 
-  it "Mock Errors" do
+  it "Errors" do
     student = Student.new
 
     allow_any_instance_of(Student).to receive(:bar).and_raise(RuntimeError)
