@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Customer, type: :model do
-  fixtures :customers
 
   it 'Create a customer' do
-    customer = customers(:jack)
+    customer = create(:customer)
 
-    expect(customer.full_name).to eq('Capitão Jack Sparrow')
-    expect(customer.email).to eq('jack.sparrow@example.com')
+    expect(customer.full_name).to eq('Sr. Bruce Wayne')
+    expect(customer.email).to eq('bruce.wayne@example.com')
   end
 end
