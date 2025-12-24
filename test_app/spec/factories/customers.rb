@@ -7,6 +7,7 @@ FactoryBot.define do
     
     name { Faker::Name.name }
     email { Faker::Internet.email }
+    address { Faker::Address.street_address }
 
     trait :male do
       gender { 'M' }
