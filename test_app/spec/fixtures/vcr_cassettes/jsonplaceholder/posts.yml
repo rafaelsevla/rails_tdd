@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://jsonplaceholder.typicode.com/posts/2
+    uri: "<API-URL>/posts/2"
     body:
       encoding: US-ASCII
       string: ''
@@ -19,7 +19,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Wed, 24 Dec 2025 17:38:31 GMT
+      - Wed, 24 Dec 2025 17:46:07 GMT
       Content-Type:
       - application/json; charset=utf-8
       Transfer-Encoding:
@@ -59,11 +59,11 @@ http_interactions:
       X-Ratelimit-Reset:
       - '1766568489'
       Age:
-      - '37'
+      - '493'
       Cf-Cache-Status:
       - HIT
       Cf-Ray:
-      - 9b31df70281bf23b-GRU
+      - 9b31ea93deaff21b-GRU
       Alt-Svc:
       - h3=":443"; ma=86400
     body:
@@ -75,5 +75,5 @@ http_interactions:
           "title": "qui est esse",
           "body": "est rerum tempore vitae\nsequi sint nihil reprehenderit dolor beatae ea dolores neque\nfugiat blanditiis voluptate porro vel nihil molestiae ut reiciendis\nqui aperiam non debitis possimus qui neque nisi nulla"
         }
-  recorded_at: Wed, 24 Dec 2025 17:38:31 GMT
+  recorded_at: Wed, 24 Dec 2025 17:46:07 GMT
 recorded_with: VCR 6.4.0
