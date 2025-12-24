@@ -7,6 +7,11 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with('Mr. ')
   end
 
+  it '#full_name - override attribute' do
+    customer = create(:customer, name: "Alice Kingsleigh")
+    expect(customer.full_name).to start_with('Mr. ')
+  end
+
   context 'HERANÇA' do
     it 'is a VIP customer - inheritance' do
       customer = create(:customer_vip)
@@ -21,9 +26,11 @@ RSpec.describe Customer, type: :model do
     end
   end
 
-  it '#full_name - override attribute' do
-    customer = create(:customer, name: "Alice Kingsleigh")
-    expect(customer.full_name).to start_with('Mr. ')
+  it 'Using attributes_for' do
+    attrs = attributes_for(:customer)
+    customer = Customer.new(attrs)
+    expect(customer.name).to eq(attrs[:name])
+    expect(customer.email).to eq(attrs[:email])
   end
 
   it { expect { create(:customer) }.to change { Customer.all.size }.by(1) }
