@@ -12,20 +12,6 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with('Mr. ')
   end
 
-  context 'HERANÇA' do
-    it 'is a VIP customer - inheritance' do
-      customer = create(:customer_vip)
-      expect(customer.vip).to eq(true)
-      expect(customer.days_to_pay).to eq(30)
-    end
-  
-    it 'is a default customer' do
-      customer = create(:customer_default)
-      expect(customer.vip).to eq(false)
-      expect(customer.days_to_pay).to eq(15)
-    end
-  end
-
   it { expect { create(:customer) }.to change { Customer.all.size }.by(1) }
 
   it 'Using attributes_for' do
@@ -35,8 +21,36 @@ RSpec.describe Customer, type: :model do
     expect(customer.email).to eq(attrs[:email])
   end
 
-  it 'Transient attributes' do
-    customer = create(:customer, upcased: true)
-    expect(customer.name.upcase).to eq(customer.name)
+  context 'Factory' do
+    context 'HERANÇA' do
+      it 'is a VIP customer - inheritance' do
+        customer = create(:customer_vip)
+        expect(customer.vip).to eq(true)
+        expect(customer.days_to_pay).to eq(30)
+      end
+    
+      it 'is a default customer' do
+        customer = create(:customer_default)
+        expect(customer.vip).to eq(false)
+        expect(customer.days_to_pay).to eq(15)
+      end
+    end
+
+    it 'Transient attributes' do
+      customer = create(:customer, upcased: true)
+      expect(customer.name.upcase).to eq(customer.name)
+    end
+  
+    it 'Male customer' do
+      customer = create(:customer_male_vip)
+      expect(customer.vip).to eq(true)
+      expect(customer.gender).to eq('M')
+    end
+  
+    it 'Female customer' do
+      customer = create(:customer_female_default)
+      expect(customer.vip).to eq(false)
+      expect(customer.gender).to eq('F')
+    end
   end
 end
