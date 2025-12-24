@@ -26,6 +26,8 @@ RSpec.describe Customer, type: :model do
     end
   end
 
+  it { expect { create(:customer) }.to change { Customer.all.size }.by(1) }
+
   it 'Using attributes_for' do
     attrs = attributes_for(:customer)
     customer = Customer.new(attrs)
@@ -33,5 +35,8 @@ RSpec.describe Customer, type: :model do
     expect(customer.email).to eq(attrs[:email])
   end
 
-  it { expect { create(:customer) }.to change { Customer.all.size }.by(1) }
+  it 'Transient attributes' do
+    customer = create(:customer, upcased: true)
+    expect(customer.name.upcase).to eq(customer.name)
+  end
 end
