@@ -22,7 +22,7 @@
 !/tmp/pids/.keep
 
 # Ignore storage (uploaded files in development and any SQLite databases).
-/storage/*
+*/storage/*
 !/storage/.keep
 /tmp/storage/*
 !/tmp/storage/
@@ -32,3 +32,4 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
