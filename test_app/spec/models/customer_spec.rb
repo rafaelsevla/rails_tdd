@@ -7,6 +7,20 @@ RSpec.describe Customer, type: :model do
     expect(customer.full_name).to start_with('Mr. ')
   end
 
+  context 'HERANÇA' do
+    it 'is a VIP customer - inheritance' do
+      customer = create(:customer_vip)
+      expect(customer.vip).to eq(true)
+      expect(customer.days_to_pay).to eq(30)
+    end
+  
+    it 'is a default customer' do
+      customer = create(:customer_default)
+      expect(customer.vip).to eq(false)
+      expect(customer.days_to_pay).to eq(15)
+    end
+  end
+
   it '#full_name - override attribute' do
     customer = create(:customer, name: "Alice Kingsleigh")
     expect(customer.full_name).to start_with('Mr. ')
