@@ -24,6 +24,10 @@ RSpec.describe CustomersController, type: :controller do
       @customer = create(:customer)
     end
 
+    it 'Route' do
+      is_expected.to route(:get, '/customers').to(action: :index)
+    end
+
     it 'Content-Type as JSON' do
       customer_params = attributes_for(:customer)
       sign_in @member
