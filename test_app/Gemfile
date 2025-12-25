@@ -58,13 +58,14 @@ group :development do
 end
 
 group :development, :test do
-  gem 'rspec-rails', '~> 6.0.0'
-  gem 'capybara'
-  gem 'spring-commands-rspec'
-  gem 'factory_bot_rails'
-  gem 'faker'
-  gem 'httparty'
-  gem 'webmock'
-  gem 'vcr'
-  gem 'shoulda-matchers', '~> 6.0'
+  gem "rspec-rails", "~> 6.0.0"
+  gem "capybara"
+  gem "spring-commands-rspec"
+  gem "factory_bot_rails"
+  gem "faker"
+  gem "httparty"
+  gem "webmock"
+  gem "vcr"
+  gem "shoulda-matchers", "~> 6.0"
+  gem "rails-controller-testing"
 end
