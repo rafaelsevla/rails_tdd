@@ -47,6 +47,15 @@ RSpec.describe CustomersController, type: :controller do
       }.to change(Customer, :count).by(1)
     end
 
+    it 'with invalid attributes' do
+      customer_params = attributes_for(:customer, address: nil)
+      sign_in @member
+
+      expect {
+        post :create, params: { customer: customer_params }
+      }.not_to change(Customer, :count)
+    end
+
     context '#show' do
       it 'get a 200 response' do
         sign_in @member
