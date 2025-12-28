@@ -17,7 +17,7 @@ feature "Customers", type: :feature do
   scenario 'Check new client form' do
     visit(customers_path)
     click_on('Novo Cliente')
-    expect(page).to have_content('Novo Clientee')
+    expect(page).to have_content('Novo Cliente')
   end
 
   scenario 'Register a new customer' do
@@ -33,5 +33,11 @@ feature "Customers", type: :feature do
 
     expect(page).to have_content('Cliente cadastrado com sucesso!')
     expect(Customer.last.name).to eq(customer_name)
+  end
+
+  scenario 'when try register invalid customer' do
+    visit(new_customer_path)
+    click_on('Criar Cliente')
+    expect(page).to have_content('não pode ficar em branco')
   end
 end
