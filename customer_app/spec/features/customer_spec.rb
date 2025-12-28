@@ -108,4 +108,18 @@ feature "Customers", type: :feature do
     find(:xpath, "/html/body/table/tbody/tr[1]/td[2]/a").click
     expect(page).to have_content("Detalhamento do Cliente")
   end
+
+  scenario 'Click on "edit" link' do
+    Customer.create!(
+      name: Faker::Name.name,
+      email: Faker::Internet.email,
+      phone: Faker::PhoneNumber.phone_number,
+      smoker: [ 'N', 'S' ].sample,
+      avatar: "#{Rails.root}/spec/fixtures/avatar.png"
+    )
+
+    visit(customers_path)
+    find(:xpath, "/html/body/table/tbody/tr[1]/td[3]/a").click
+    expect(page).to have_content("Editar Cliente")
+  end
 end
