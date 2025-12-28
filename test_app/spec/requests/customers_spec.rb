@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Customers", type: :request do
+RSpec.describe Customer, type: :request do
   describe "GET /customers" do
     it "works! 200 OK" do
       get customers_path
@@ -25,6 +25,36 @@ RSpec.describe "Customers", type: :request do
         get "/customers/1.json"
         expect(response.body).to include_json(id: /\d/)
       end
+
+      it 'update - JSON' do
+        member = create(:member)
+        login_as(member, scope: :member)
+
+        headers = { "ACCEPT" => "application/json" }
+
+        customers = Customer.first
+        customers.name += "- Atualizado"
+
+        patch "/customers/#{customers.id}.json", params: { customer: customers.attributes }, headers: headers
+
+        expect(response.body).to include_json(
+          id: /\d/,
+          name: customers.name,
+          email: customers.email
+        )
+      end
+
+      it 'destroy - JSON' do
+        member = create(:member)
+        login_as(member, scope: :member)
+
+        headers = { "ACCEPT" => "application/json" }
+
+        customers = Customer.first
+
+          expect{ delete "/customers/#{customers.id}.json", headers: headers }.to change(Customer, :count).by(-1)
+          expect(response).to have_http_status(204)
+      end
     end
 
     it 'create - JSON' do
@@ -40,25 +70,6 @@ RSpec.describe "Customers", type: :request do
         id: /\d/,
         name: customers_params[:name],
         email: customers_params[:email]
-      )
-    end
-
-    it 'update - JSON' do
-      create(:customer)
-      member = create(:member)
-      login_as(member, scope: :member)
-
-      headers = { "ACCEPT" => "application/json" }
-
-      customers = Customer.first
-      customers.name += "- Atualizado"
-
-      patch "/customers/#{customers.id}.json", params: { customer: customers.attributes }, headers: headers
-
-      expect(response.body).to include_json(
-        id: /\d/,
-        name: customers.name,
-        email: customers.email
       )
     end
   end
