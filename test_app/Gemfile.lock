@@ -298,6 +298,7 @@ GEM
     rspec-expectations (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
+    rspec-json_expectations (2.2.0)
     rspec-mocks (3.13.7)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
@@ -445,6 +446,7 @@ DEPENDENCIES
   puma (>= 5.0)
   rails (~> 8.0.3)
   rails-controller-testing
+  rspec-json_expectations
   rspec-rails (~> 6.0.0)
   rubocop-rails-omakase
   shoulda-matchers (~> 6.0)
