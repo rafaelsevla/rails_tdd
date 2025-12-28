@@ -13,4 +13,10 @@ feature "Customers", type: :feature do
     expect(page).to have_content('Listando clientes')
     expect(page).to have_link('Novo Cliente')
   end
+
+  scenario 'Check new client form' do
+    visit(customers_path)
+    click_on('Novo Cliente')
+    expect(page).to have_content('Novo Clientee')
+  end
 end
